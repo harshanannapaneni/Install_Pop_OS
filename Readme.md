@@ -1,48 +1,90 @@
 # Install Pop OS Dualboot on windows 11
 
 ## _Steps:_
+1. __Format the Pendrive (Optional Step):__
+    * Insert your USB drive into your Windows 11 computer.
+    * Open File Explorer and locate your USB drive.
+    * Right-click on the USB drive and select "Format..."
+    * Choose the file system you want (usually FAT32) and click "Start" to format the drive.
+    ![WindowsFormater](./windows_formater.png)
 
-### 1. Make a bootable drive that has pop os ISO file
-    1. Format the pendrive using the default formater on windows 11 (Optional Step)
-    2. Download software of your choice to make the pendrive/harddisk bootable. I prefer [Ventoy](https://www.ventoy.net/en/download.html)
+
+2. __Make a bootable drive__
+    * Visit the [Ventoy download page](https://www.ventoy.net/en/download.html)
+    * Choose the version of Ventoy that matches your operating system (Windows in this case).
+    * Download the Ventoy zip file to your computer.
+    * Extract the zip file and execute the Ventoy2Disk.exe
+    * Select the Disk you want to convert into bootable and click on Install.
     
+    Note: You can use other bootable USB flash drives softwares like [Balena Etcher](https://etcher.balena.io/) , [Rufus](https://rufus.ie/en/) etc.
+    ![Ventoy](./ventoy.png)
+
+3. __Downlaod Pop!\_OS image__
+    * Go to [Pop!_OS official page](https://pop.system76.com/) and download the version that is compatible for your system.(If Nvidia Chip download Nvidia Version else the LTS Version)
+    * Copy and paste the image onto the bootable drive.
+    <p align="centre"><img src='./pop%20os.png')></p>
+
+4. __Boot from Ventoy USB Drive__
+    1. Insert USB Drive and Restart Your Computer:
+        * Insert the Ventoy USB drive into your computer.
+        * Restart your computer and enter the BIOS/UEFI settings to change the boot order, prioritizing booting from the USB drive.
+    2. Select Pop!_OS from Ventoy Menu:
+        * When your computer boots from the Ventoy USB drive, you'll see a menu listing all the ISO files present on the drive, including Pop!_OS.
+        * Use the arrow keys to navigate to the Pop!_OS entry and press Enter to start the Pop!_OS live environment.
+        ![MSI Bios](./msi_bios.jpg)
+        <img src='./asus_1.png'>
+
+        ![Ventoy BIOS Image](./ventoy_pop_os.jpg)
 
 
-1. Item 1
-2. Item 2
-3. Item 3
-    1. Item 3a
-    2. Item 3b
 
-## Images
+5. __Install Pop!\_OS Alongside Existing OS__
+    1. Follow Pop!_OS Installation Process:
+        * Once Pop!_OS boots from the USB drive, follow the on-screen instructions to begin the installation process.
+        * Choose the option to install Pop!_OS alongside your existing operating system (e.g., Windows).
+        * Allocate disk space for Pop!_OS during the installation process. (Boot:1GB and Root:50GB or more)
+    2. Complete Installation:
+        * Finish installing Pop!_OS on your computer as guided by the installer.
 
-![This is an alt text.](/image/sample.webp "This is a sample image.")
+        ![Language](./lang.png)
+        ![Pop!_OS Installation](./installation.png)
 
-## Links
 
-You may be using [Markdown Live Preview](https://markdownlivepreview.com/).
 
-## Blockquotes
+6. __Reboot and Dual-Boot__
+    1. Restart Your Computer:
+       * After the installation is complete, restart your computer.
+    2. Boot Manager:
+       * Your system should now display a boot manager (like GRUB) during startup, allowing you to choose between Pop!_OS and your existing OS (e.g., Windows).
+    3. Select Pop!_OS:
+        * Use the arrow keys to select Pop!_OS from the boot menu and press Enter to start using your dual-boot setup.
 
-> Markdown is a lightweight markup language with plain-text-formatting syntax, created in 2004 by John Gruber with Aaron Swartz.
->
->> Markdown is often used to format readme files, for writing messages in online discussion forums, and to create rich text using a plain text editor.
 
-## Tables
+## __How to access bios on different devices:__
 
-| Left columns  | Right columns |
-| ------------- |:-------------:|
-| left foo      | right foo     |
-| left bar      | right bar     |
-| left baz      | right baz     |
+To access the BIOS/UEFI settings on most laptops, use the following key combinations immediately after powering on your device:
 
-## Blocks of code
+- **For F2 Key (Access BIOS/UEFI):**
+  - **Asus**, **Dell**, **Acer**, **Samsung**, **Toshiba**: Press **F2** key repeatedly.
 
-```
-let message = 'Hello world';
-alert(message);
-```
+- **For Delete Key (Access BIOS/UEFI):**
+  - **MSI**: Press **Delete** key repeatedly.
 
-## Inline code
+- **For Other Brands (Shortcut to BIOS/UEFI):**
+  - **HP Laptops:** Press **Esc**, then **F10**.
+  - **Lenovo Laptops:** Press **F1** or **F2** key repeatedly.
 
-This web site is using `markedjs/marked`.
+If these keys don't work for your specific laptop model, refer to the user manual or visit the manufacturer's website for detailed instructions on accessing the BIOS/UEFI settings. Different laptop models or series within the same brand may have slightly different key combinations.
+
+
+## Post-installation:
+
+1. Add additional commands to install the softwares (if any) to the list that is already in initials.sh.
+2. Make the file executable using the below command.
+    ```
+    chmod u+x initials.sh
+    ```
+3. Execute the `initials.sh` to install the softwares using the below command.
+    ```
+    ./initials.sh
+    ```
