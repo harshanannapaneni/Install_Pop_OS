@@ -88,3 +88,13 @@ If these keys don't work for your specific laptop model, refer to the user manua
     ```
     ./initials.sh
     ```
+### Set theme and icons (Completely optional):
+1. I personally like Drakula application and kora icon themes. Execute the below command to automatically get them on to your machine with no hassle.
+    ```
+    # Make the script executable.
+    chmod u+x drakula_theme_kora_icons.sh
+
+    # Execute the script
+    ./drakula_theme_kora_icons.sh
+    ```
+    __Note__: Make sure to execute initials.sh first.

@@ -42,6 +42,17 @@ else
 fi
 ' >> ~/.bashrc
 
+
+# Change terminal window name by running the command "set-title name_the_terminal"
+echo '
+function set-title() {
+  if [[ -z "$ORIG" ]]; then
+    ORIG=$PS1
+  fi
+  TITLE="\[\e]2;$*\a\]"
+  PS1=${ORIG}${TITLE}
+}' >> ~/.bashrc
+
 # Reload .bashrc to apply changes
 source ~/.bashrc
 
